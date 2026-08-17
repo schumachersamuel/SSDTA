@@ -108,7 +108,14 @@ mycobacterial burden rather than test-specific measurement properties.
 
 **C3 — Estimability of `pi` in the target setting.** The Not-detected weight
 cannot be observed in routine data and must be modelled or borrowed, with
-uncertainty quantified.
+uncertainty quantified. Two direct sources exist: a study that applies the
+reference standard to Ultra-negatives in the target population (as in the
+shipped `research` profile, used via `pi = "observed"`), or an independent
+evidence synthesis of Ultra sensitivity in a comparable population — a
+systematic review's pooled sensitivity for the relevant setting gives
+π = 1 − sensitivity directly. Either route still needs C1's transportability
+condition applied to π itself: does the verifying study's or review's
+population match the target setting closely enough for its π to transfer?
 
 **D1 — Stratifier independence from the index test (design condition).** The
 weights must come from data independent of the index test under evaluation.
@@ -129,11 +136,20 @@ platform version, reference-standard differences, HIV status, or cavitation.
 Diagnose with `plot_forest_stratum()` and `ssdta_meta_sensitivity(loo = TRUE)`;
 neither adjusts for a violation it finds.
 
-**5.2 `pi` is an unidentified target parameter, not sampling noise (high).**
-A fixed or gridded `pi` is a *structural scenario analysis* and must not be
-described as full uncertainty propagation. Report one explicitly justified
-central scenario, a prespecified plausible range, the complete `S_std(pi)`
-curve, and the source and population each anchor applies to.
+**5.2 `pi` is not identifiable from routine programmatic data alone (high).**
+Routine Ultra-positive counts describe the distribution among *detected* cases
+only and cannot by themselves reveal what share of true cases Ultra missed.
+This is not the same as saying π is generally unknown: a study that verifies
+Ultra-negatives against the reference standard supplies it directly (the
+`research` profile shipped here uses exactly this, via `pi = "observed"`), and
+an independent systematic review of Ultra sensitivity in a comparable
+population supplies a borrowed estimate (π = 1 − sensitivity). Where neither
+is available for the target setting, or the available estimate's population
+match is uncertain, a fixed or gridded `pi` is the fallback — a *structural
+scenario analysis*, not full uncertainty propagation. In that fallback case,
+report one explicitly justified central scenario, a prespecified plausible
+range, the complete `S_std(pi)` curve, and the source and population each
+anchor applies to.
 
 **5.3 Verification and selection mechanisms can bias `S_k` (high).** Complete
 verification, or a defensible correction model, is an input-quality condition
@@ -175,9 +191,15 @@ sensitivity analysis wherever a profile is sparse.
 
 Unresolved in the method itself:
 
-- **Estimating `pi` in a target setting** — the central open problem. Routine
-  data cannot identify it; borrowing across settings needs a defensible model.
-  (`oq-spectrum-standardized-accuracy-pi-estimation`)
+- **Formalizing borrowed `pi` estimates.** §4 (C3) and §5.2 describe two direct
+  routes to π — verified research data, or a systematic review's pooled Ultra
+  sensitivity for a comparable population — but the package has no structured
+  way to select among multiple candidate reviews, weight them, or combine them,
+  and no formal treatment of the added transportability uncertainty from
+  borrowing across settings rather than measuring π in the target population
+  directly. This is the residual problem once a direct or borrowed point
+  estimate exists but its provenance and uncertainty need to be handled
+  rigorously. (`oq-spectrum-standardized-accuracy-pi-estimation`)
 - **Partial verification and screening** — whether the `S_k` inputs are
   estimable and unbiased when source studies use CAD pre-screening or apply the
   reference standard to only some participants.

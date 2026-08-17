@@ -18,7 +18,8 @@ semi-quant grade) and `w_k` is that stratum's share in the target population.
 📄 **Method paper:** Schumacher SG (2026), *Spectrum-Standardised Diagnostic
 Accuracy*, Zenodo preprint,
 doi:[10.5281/zenodo.20033072](https://doi.org/10.5281/zenodo.20033072)
-(CC BY-SA 4.0) · `citation("SSDTA")`
+(CC BY-SA 4.0) · MIT-licensed, citation requested — see
+[Citation](#citation)
 📘 **[METHOD.md](METHOD.md)** — validity conditions, limitations, open questions,
 planned extensions, and shipped-data provenance. Read it before reporting an
 estimate.
@@ -191,8 +192,11 @@ central value + sensitivity analysis). Research data observed it directly, so
 
 A fixed/grid `pi` is a scenario analysis, not probabilistic propagation of
 uncertainty in `pi`. When defensible external information supports a probability
-distribution for `pi`, a future API should accept `pi_draws` (or a Beta/logit-
-normal prior) and integrate it jointly with the other draws.
+distribution for `pi` (e.g. a systematic review's pooled Ultra sensitivity for
+the target setting, giving π = 1 − sensitivity), a future API should accept
+`pi_draws` (or a Beta/logit-normal prior) and integrate it jointly with the
+other draws. See [METHOD.md §4/§5.2](METHOD.md#4-validity-conditions) for the
+two direct routes to π that already exist outside this future API.
 
 ## Aggregating burden distributions across settings
 
@@ -270,6 +274,39 @@ roxygen2::roxygenise(roclets = c("rd"))   # NOT "namespace"
 `NAMESPACE` is hand-written and carries `importFrom` directives that no roxygen
 tag in the source declares — regenerating it would silently drop the imports.
 roxygen2 refuses to overwrite it on its own; keep it that way.
+
+## Citation
+
+MIT-licensed (below) — you don't need permission to use, modify, or
+redistribute this package. Citation isn't a license condition, but it is
+requested: this is academic work, and citing it is how that gets recognized.
+Please cite the paper for the method and the package for the software:
+
+> Schumacher SG (2026). *Spectrum-Standardised Diagnostic Accuracy: A
+> Framework for Adjusting Test Sensitivity for Case-Mix Variation Across
+> Clinical Settings.* World Health Organization, Geneva. Zenodo preprint.
+> doi:[10.5281/zenodo.20033072](https://doi.org/10.5281/zenodo.20033072)
+>
+> Schumacher SG (2026). *SSDTA: Spectrum-Standardized Diagnostic Test
+> Accuracy.* R package version 0.1.0.
+
+Running `citation("SSDTA")` in R returns both entries with BibTeX.
+
+## License
+
+[MIT](LICENSE) — permissive: use, modify, and redistribute freely, including
+commercially, provided the copyright notice is retained. Copyright is held by
+the author (Samuel Schumacher); MIT doesn't transfer it, it grants broad
+permission to use the work while the author keeps that status.
+
+The shipped datasets (`data/*.rda`) are the author's own extraction and
+re-analysis (posterior draws, summaries, burden profiles) of results reported
+in the source studies listed in
+[METHOD.md §8](METHOD.md#8-shipped-data--provenance-and-release-gate) — this
+license covers that re-analysis, not the underlying studies themselves.
+Anyone publishing results derived from `npoc_by_ultra_stratum`, `npoc_studies`,
+or `npoc_posterior_draws` should also cite the relevant source study or
+studies, not only this package.
 
 ## Acknowledgments
 
