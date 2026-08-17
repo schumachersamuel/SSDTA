@@ -185,8 +185,7 @@ Unresolved in the method itself:
 
 ## 7. Planned extensions
 
-Development order recommended by the review, unchanged apart from item 2, which
-the 2026-08-17 diagnostics work partly delivered:
+Recommended order:
 
 1. **`pi_draws` interface** — accept a Beta/logit-normal posterior for `pi` and
    integrate it jointly, with reporting that keeps scenario-grid and
@@ -232,25 +231,18 @@ for per-object documentation. Provenance in brief:
 | `burden_profiles$screening_kendall` | Kendall et al., community screening, Uganda (n=89) |
 | `burden_profiles$screening_pakistan` | Pluslife/MiniDock screening evaluation (n=118) |
 
-> ✅ **Release gate — cleared 2026-08-17.** `npoc_by_ultra_stratum` and the
-> posterior draws derived from it contain per-study accuracy data. At assembly,
-> four of the five source studies (Hartati, Mbuli, Rockman, Steadman) were
-> unpublished; status was re-verified against Crossref on 2026-08-17 and all
-> five now have a public record — Steadman (eBioMedicine 2025;121:105991) and
-> Yerlikaya (NEJM 2026;394:1710–1722) are journal-published, and Hartati
-> (medRxiv), Mbuli (medRxiv) and Rockman (Research Square) have preprinted.
-> The maintainer (S. Schumacher) has decided a preprint satisfies this gate:
-> **the package and its shipped data are cleared for public release.**
-> `npoc_studies$pub_status` is the machine-readable record of this decision;
-> re-check it if any of the three preprints is later withdrawn rather than
-> published.
+> **Publication status.** Two of the five source studies are peer-reviewed
+> journal publications — Steadman (eBioMedicine 2025;121:105991) and Yerlikaya
+> (NEJM 2026;394:1710–1722). The other three are preprints, not yet
+> peer-reviewed — Hartati (medRxiv), Mbuli (medRxiv), and Rockman (Research
+> Square). `npoc_studies$pub_status` and `npoc_studies$doi` record this per
+> study.
 >
-> One reconciliation gap remains open, independent of the release decision:
-> the shipped counts come from the GDG-era pre-publication analyses, not the
+> The shipped counts predate publication and differ slightly from the
 > now-published papers — Yerlikaya's NEJM paper reports 1380 enrolled and 226
-> culture-confirmed, against the 1300 / 223-with-Ultra-grade used here. Anyone
-> citing the published papers directly should expect small discrepancies with
-> the numbers in this package until that reconciliation is done.
+> culture-confirmed, against 1300 enrolled / 223-with-Ultra-grade used here.
+> Expect small discrepancies when cross-checking against the published papers
+> directly; that reconciliation has not yet been done.
 >
 > South African NHLS programmatic data (~11.4M Ultra tests) is larger than the
 > Pakistan routine source but was not used: the full five-category breakdown is
@@ -370,14 +362,13 @@ differences applied to sensitivity.
    adjustable: both index-minus-anchor gaps can be standardized to a common
    burden distribution via §1–§4's method before subtracting.
 
-**Honest counterweights:**
+**Caveats:**
 
-- This is a special case, not a new estimator class. A sophisticated reader
-  will correctly see it as Bucher-on-risk-differences under stated conditions
-  — the contribution is the conditions and the framing, not the algebra.
-  General diagnostic network meta-analysis can already produce this comparison
-  as a byproduct; the case for the simpler estimator is transparency and
-  communicability, not capability.
+- This is a special case, not a new estimator class: it is Bucher-on-risk-
+  differences under stated conditions, and the contribution is the conditions
+  and the framing, not the algebra. General diagnostic network meta-analysis
+  can already produce this comparison as a byproduct; the case for the simpler
+  estimator is transparency and communicability, not capability.
 - A published warning is relevant here: an individual-patient-data study
   found that adjusting for indirectness did **not** successfully remove bias
   in a comparative test-accuracy case, even with full IPD (Wang et al. 2015,

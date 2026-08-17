@@ -20,7 +20,7 @@ Accuracy*, Zenodo preprint,
 doi:[10.5281/zenodo.20033072](https://doi.org/10.5281/zenodo.20033072)
 (CC BY-SA 4.0) · `citation("SSDTA")`
 📘 **[METHOD.md](METHOD.md)** — validity conditions, limitations, open questions,
-planned extensions, and the data release gate. Read it before reporting an
+planned extensions, and shipped-data provenance. Read it before reporting an
 estimate.
 
 Two things it does:
@@ -231,9 +231,11 @@ implemented.
 Each of these is expanded, severity-ranked and paired with the planned fix in
 **[METHOD.md](METHOD.md)** (§5 limitations, §6 open questions, §7 extensions).
 
-> The shipped per-study data include studies that were unpublished when the
-> package was assembled; publication status was re-verified and the release
-> gate cleared 2026-08-17 — see [METHOD.md §8](METHOD.md#8-shipped-data--provenance-and-release-gate).
+> Two of the five source studies behind the shipped per-study data are
+> journal-published; the other three are preprints — see
+> [METHOD.md §8](METHOD.md#8-shipped-data--provenance-and-release-gate) for
+> per-study citations and a known reconciliation gap against the now-published
+> papers.
 
 ## Tests
 
@@ -268,10 +270,6 @@ roxygen2::roxygenise(roclets = c("rd"))   # NOT "namespace"
 `NAMESPACE` is hand-written and carries `importFrom` directives that no roxygen
 tag in the source declares — regenerating it would silently drop the imports.
 roxygen2 refuses to overwrite it on its own; keep it that way.
-
-> The data release gate in
-> [METHOD.md §8](METHOD.md#8-shipped-data--provenance-and-release-gate) was
-> cleared 2026-08-17.
 
 ## Acknowledgments
 
