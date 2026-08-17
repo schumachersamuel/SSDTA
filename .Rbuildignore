@@ -1,0 +1,27 @@
+# Files kept in the working copy but excluded from the built tarball.
+
+# Internal review documents: local filesystem paths, named AI-tool authorship,
+# and internal knowledge-base metadata not meant for public/CRAN-style
+# distribution. Their substance is folded into METHOD.md in clean form.
+^SSDTA-chatgpt-review-prompt\.md$
+^SSDTA-statistical-and-package-review-2026\.md$
+
+# Scratch analysis page, superseded by METHOD.md
+^npoc-screening-verification-designs\.html$
+
+# Data provenance scripts and their 1.1 MB inputs. The shipped .rda objects in
+# data/ are the product; provenance is documented in R/data.R and METHOD.md §8.
+# Drop this rule if you want the build pipeline to travel with the package.
+^data-raw$
+
+# Build and editor artefacts
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.DS_Store$
+^.*\.Rcheck$
+^.*\.tar\.gz$
+
+# GitHub-specific, not part of the CRAN-style package build
+^\.github$
+^CONTRIBUTING\.md$
+^\.git$

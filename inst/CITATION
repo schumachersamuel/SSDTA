@@ -1,0 +1,34 @@
+citHeader(
+  "SSDTA implements the framework described in the method paper. Please cite",
+  "the paper for the method, and the package for the software:")
+
+bibentry(
+  bibtype     = "TechReport",
+  title       = paste("Spectrum-Standardised Diagnostic Accuracy: A Framework for",
+                      "Adjusting Test Sensitivity for Case-Mix Variation Across",
+                      "Clinical Settings"),
+  author      = person("Samuel G.", "Schumacher"),
+  institution = "World Health Organization",
+  address     = "Geneva, Switzerland",
+  year        = "2026",
+  doi         = "10.5281/zenodo.20033072",
+  url         = "https://zenodo.org/records/20033072",
+  note        = "Preprint, Zenodo. Licensed CC BY-SA 4.0.",
+  textVersion = paste(
+    "Schumacher SG (2026). Spectrum-Standardised Diagnostic Accuracy: A Framework",
+    "for Adjusting Test Sensitivity for Case-Mix Variation Across Clinical Settings.",
+    "World Health Organization, Geneva. Zenodo preprint.",
+    "doi:10.5281/zenodo.20033072")
+)
+
+bibentry(
+  bibtype     = "Manual",
+  title       = "SSDTA: Spectrum-Standardized Diagnostic Test Accuracy",
+  author      = person("Samuel G.", "Schumacher"),
+  year        = "2026",
+  note        = "R package version 0.1.0",
+  url         = "https://doi.org/10.5281/zenodo.20033072",
+  textVersion = paste(
+    "Schumacher SG (2026). SSDTA: Spectrum-Standardized Diagnostic Test Accuracy.",
+    "R package version 0.1.0.")
+)

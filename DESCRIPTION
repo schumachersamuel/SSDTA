@@ -1,0 +1,31 @@
+Package: SSDTA
+Type: Package
+Title: Spectrum-Standardized Diagnostic Test Accuracy
+Version: 0.1.0
+Authors@R: person("Samuel", "Schumacher", role = c("aut", "cre"),
+    email = "Schumacher.Samuel@gmail.com")
+Author: Samuel Schumacher [aut, cre]
+Maintainer: Samuel Schumacher <Schumacher.Samuel@gmail.com>
+Description: Tools for spectrum-standardized diagnostic test accuracy. Estimate
+    stratum-specific sensitivity across studies (Bayesian, GLMM, or conjugate
+    engines), then reweight to a target population's burden distribution to
+    obtain a standardized, context-specific sensitivity with propagation of
+    posterior sensitivity uncertainty and Dirichlet case-mix sampling
+    uncertainty, conditional on the chosen unobserved-stratum scenario. Useful
+    in its own right for reporting expected sensitivity in a chosen population,
+    and for comparing two tests without head-to-head data by differencing their
+    standardized sensitivities under a common target distribution. When
+    stratum-specific data are unavailable, an
+    anchored difference-in-differences fallback partially deconfounds the
+    comparison. The stratifier is generic (Xpert Ultra semi-quant for TB, but
+    CD4 bands, Ct values, etc. for other settings). Implements the framework in
+    Schumacher (2026) <doi:10.5281/zenodo.20033072>; see METHOD.md for the
+    validity conditions, limitations and planned extensions.
+URL: https://doi.org/10.5281/zenodo.20033072
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 4.0)
+Imports: ggplot2, stats
+Suggests: brms, metafor, lme4, dplyr, tidyr, patchwork, knitr
+RoxygenNote: 8.1.0
