@@ -250,7 +250,7 @@ for per-object documentation. Provenance in brief:
 | `npoc_posterior_draws`, `npoc_stratum_summary` | The paper's brms/Stan fit to the above; Union 2026 abstract UNIONCONF2026:3197 |
 | `burden_profiles$research` | Pooled Ultra-positive culture-confirmed cases from the same 5 GDG PICO1 studies (n=507, plus 40 observed Not-detected) |
 | `burden_profiles$routine_pakistan` | GxAlert National TB Reference Laboratory reports 2019 + 2021, pooled (n=88,560) |
-| `burden_profiles$screening_kendall` | Kendall et al., community screening, Uganda (n=89) |
+| `burden_profiles$screening_kendall` | Kendall E, unpublished data: culture-confirmed Xpert Ultra-positive results from community-wide screening in Kampala, Uganda, 2021-2024 (cohort of Sung et al., Lancet Infect Dis 2026), n=89 |
 | `burden_profiles$screening_pakistan` | Pluslife/MiniDock screening evaluation (n=118) |
 
 > **Publication status.** Two of the five source studies are peer-reviewed

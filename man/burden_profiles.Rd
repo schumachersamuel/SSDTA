@@ -9,7 +9,8 @@ named list of \code{burden_profile} objects.
 }
 \source{
 GDG PICO1/PICO4 reports; GxAlert Pakistan national reports; Kendall
-  et al.; 'Data for Samuel.pptx' slide 1.
+  E, unpublished data (personal communication, 2026; cohort of Sung et al.,
+  Lancet Infect Dis 2026); 'Data for Samuel.pptx' slide 1.
 }
 \usage{
 burden_profiles
@@ -19,7 +20,8 @@ A named list of \code{burden_profile} objects giving the Xpert Ultra
 semi-quant distribution of true (culture-positive) cases in different target
 populations: \code{research} (GDG PICO1 studies, with observed Not-detected
 count), \code{routine_pakistan} (GxAlert National reports 2019+2021,
-n=88,560), \code{screening_kendall} (Kendall community screening, Uganda,
+n=88,560), \code{screening_kendall} (culture-confirmed results from community-wide
+screening in Kampala, Uganda, 2021-2024; unpublished data from E. Kendall,
 n=89), \code{screening_pakistan} (Pluslife/MiniDock screening evaluation,
 n=118). Used as the target distribution in \code{\link{ssdta_standardize}}.
 }

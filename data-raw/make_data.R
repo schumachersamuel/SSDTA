@@ -42,9 +42,11 @@ burden_profiles <- list(
     note = "Largest published programmatic 5-category breakdown; pi unknown -> sensitivity grid"),
   screening_kendall = mkprof(
     "Screening", "Uganda",
-    "Kendall et al. community screening (observed Ultra semi-quant counts)",
+    paste("Kendall E, unpublished data (personal communication, 9 Apr 2026):",
+          "culture-confirmed Xpert Ultra-positive results, community-wide screening,",
+          "Kampala, 2021-2024 (cohort of Sung et al., Lancet Infect Dis 2026)"),
     89, 14, 11, 21, 20, 23,
-    note = "pi unknown -> sensitivity grid"),
+    note = "Culture-confirmed results only (trace-positive, culture-negative results excluded); pi unknown -> sensitivity grid"),
   screening_pakistan = mkprof(
     "Screening", "Pakistan",
     "Pluslife/MiniDock evaluation, screening context (slide 1, 'Data for Samuel.pptx'); country per S. Schumacher",

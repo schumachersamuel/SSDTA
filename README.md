@@ -183,7 +183,7 @@ All scalar standardization and comparison objects support `print()`, `summary()`
 | `npoc_stratum_summary` | per-stratum posterior medians + CrIs |
 | `npoc_by_ultra_stratum` | real per-study TP/FN by Ultra stratum (GDG PICO1 Table 3) — for `ssdta_meta` |
 | `npoc_studies` | characteristics of those 5 studies (country, case-finding, specimen, reference standard, n, publication status, DOI) — joins to `npoc_by_ultra_stratum` on `study` |
-| `burden_profiles` | `research`, `routine_pakistan` (GxAlert 2019+2021, n=88,560), `screening_kendall` (Uganda, n=89), `screening_pakistan` (new, n=118) |
+| `burden_profiles` | `research`, `routine_pakistan` (GxAlert 2019+2021, n=88,560), `screening_kendall` (Kampala, Uganda, 2021-24, culture-confirmed, n=89; unpublished data from E. Kendall), `screening_pakistan` (new, n=118) |
 
 **pi (the Not-detected weight)** — the Ultra false-negative stratum is not
 observable in routine data, so its weight `pi` enters as a scalar/grid (report a
