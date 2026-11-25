@@ -252,5 +252,16 @@ p_ok <- tryCatch({
 }, error = function(e) { cat("   plot error:", conditionMessage(e), "\n"); FALSE })
 check(p_ok, "all spectrum + DiD figures build")
 
+# ---- joint Stan model (slow; run with SSDTA_TEST_STAN=1) -------------------
+# Regression test for 0.1.1: stratum names with non-syntactic characters
+# ("Not-detected", "Very low") must map back, and a user `control` must not clash.
+if (identical(Sys.getenv("SSDTA_TEST_STAN"), "1") && requireNamespace("brms", quietly = TRUE)) {
+  jm <- suppressWarnings(ssdta_meta(npoc_by_ultra_stratum, engine = "stan_joint", n_draws = 500,
+                                    seed = 1, control = list(adapt_delta = 0.9)))
+  check(setequal(levels(jm$draws$category), levels(npoc_by_ultra_stratum$stratum)),
+        "joint Stan model returns all six strata incl. 'Not-detected'")
+  check(all(table(jm$draws$category) == 500), "joint Stan model: 500 draws per stratum")
+} else cat("  skip joint Stan model (set SSDTA_TEST_STAN=1 to run)\n")
+
 cat(sprintf("\n%d passed, %d failed\n", ok, fail))
 if (fail > 0) quit(status = 1)

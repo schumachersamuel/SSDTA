@@ -1,7 +1,7 @@
 Package: SSDTA
 Type: Package
 Title: Spectrum-Standardized Diagnostic Test Accuracy
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person("Samuel", "Schumacher", role = c("aut", "cre"),
     email = "Schumacher.Samuel@gmail.com")
 Author: Samuel Schumacher [aut, cre]
@@ -26,6 +26,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.0)
-Imports: ggplot2, stats
+Imports: ggplot2, stats, utils
 Suggests: brms, metafor, lme4, dplyr, tidyr, patchwork, knitr
 RoxygenNote: 8.1.0

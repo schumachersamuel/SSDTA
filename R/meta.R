@@ -172,24 +172,35 @@ print.ssdta_meta <- function(x, ...) {
     stop("engine = 'stan_joint' needs the 'brms' package (Stan backend). ",
          "Use engine = 'glmm' or 'conjugate' for a dependency-light alternative.")
   d$n <- d$tp + d$fn
-  d$stratum <- factor(as.character(d$stratum), levels = strata)
+  # Fit on internal syntactic labels (s1, s2, ...) so that brms coefficient
+  # names are predictable whatever the stratum names contain. Before 0.1.1 the
+  # stratum names were used directly and brms renamed e.g. "Not-detected" to
+  # "NotMdetected", which could not be mapped back (fit stopped with an error).
+  d$stratum <- factor(as.character(d$stratum), levels = strata,
+                      labels = paste0("s", seq_along(strata)))
   has_re <- length(unique(d$study)) > 1
   form <- if (has_re) brms::bf(tp | trials(n) ~ 0 + stratum + (1 | study))
           else brms::bf(tp | trials(n) ~ 0 + stratum)
   pr <- brms::prior_string(prior_intercept, class = "b")
   if (has_re) pr <- pr + brms::prior_string(prior_sd, class = "sd")
-  fit <- brms::brm(form, data = d, family = brms::brmsfamily("binomial", link = "logit"),
+  # A user-supplied `control` (passed through ...) is merged over the default
+  # rather than clashing with it (before 0.1.1: "formal argument 'control'
+  # matched by multiple actual arguments").
+  dots <- list(...)
+  control <- utils::modifyList(list(adapt_delta = 0.95),
+                               if (is.null(dots$control)) list() else dots$control)
+  dots$control <- NULL
+  fit <- do.call(brms::brm, c(list(form, data = d,
+                   family = brms::brmsfamily("binomial", link = "logit"),
                    prior = pr, chains = 4, iter = 4000, refresh = 0, silent = 2,
-                   seed = seed, control = list(adapt_delta = 0.95), ...)
+                   seed = seed, control = control), dots))
   post <- brms::as_draws_df(fit)
 
-  # brms strips non-alphanumeric characters from coefficient names, so match on
-  # a normalised key rather than assuming the mangling rule. Any stratum that
+  # Map each stratum to its coefficient by the internal label. Any stratum that
   # fails to map is an error -- silently dropping one would quietly change the
   # estimand of every downstream standardization.
   cols <- grep("^b_stratum", colnames(post), value = TRUE)
-  norm <- function(z) tolower(gsub("[^A-Za-z0-9]", "", z))
-  idx <- match(norm(paste0("b_stratum", strata)), norm(cols))
+  idx <- match(paste0("b_stratums", seq_along(strata)), cols)
   if (anyNA(idx))
     stop("Could not map strata to joint-model coefficients: ",
          paste(strata[is.na(idx)], collapse = ", "),

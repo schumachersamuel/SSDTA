@@ -255,9 +255,9 @@ list at the top of the file, or the test passes locally and fails only on build.
 ## Building a distributable tarball
 
 ```sh
-R CMD build SSDTA                                    # -> SSDTA_0.1.0.tar.gz (1.0 MB)
-_R_CHECK_FORCE_SUGGESTS_=false R CMD check SSDTA_0.1.0.tar.gz
-R CMD INSTALL SSDTA_0.1.0.tar.gz                     # what a downloader runs
+R CMD build SSDTA                                    # -> SSDTA_0.1.1.tar.gz (1.0 MB)
+_R_CHECK_FORCE_SUGGESTS_=false R CMD check SSDTA_0.1.1.tar.gz
+R CMD INSTALL SSDTA_0.1.1.tar.gz                     # what a downloader runs
 ```
 
 `_R_CHECK_FORCE_SUGGESTS_=false` is needed only where `brms` is absent. Current
@@ -288,7 +288,7 @@ Please cite the paper for the method and the package for the software:
 > doi:[10.5281/zenodo.20033072](https://doi.org/10.5281/zenodo.20033072)
 >
 > Schumacher SG (2026). *SSDTA: Spectrum-Standardized Diagnostic Test
-> Accuracy.* R package version 0.1.0.
+> Accuracy.* R package version 0.1.1.
 
 Running `citation("SSDTA")` in R returns both entries with BibTeX.
 
