@@ -173,7 +173,7 @@ print.ssdta_meta <- function(x, ...) {
          "Use engine = 'glmm' or 'conjugate' for a dependency-light alternative.")
   d$n <- d$tp + d$fn
   # Fit on internal syntactic labels (s1, s2, ...) so that brms coefficient
-  # names are predictable whatever the stratum names contain. Before 0.1.1 the
+  # names are predictable whatever the stratum names contain. Before 0.1.2 the
   # stratum names were used directly and brms renamed e.g. "Not-detected" to
   # "NotMdetected", which could not be mapped back (fit stopped with an error).
   d$stratum <- factor(as.character(d$stratum), levels = strata,
@@ -184,7 +184,7 @@ print.ssdta_meta <- function(x, ...) {
   pr <- brms::prior_string(prior_intercept, class = "b")
   if (has_re) pr <- pr + brms::prior_string(prior_sd, class = "sd")
   # A user-supplied `control` (passed through ...) is merged over the default
-  # rather than clashing with it (before 0.1.1: "formal argument 'control'
+  # rather than clashing with it (before 0.1.2: "formal argument 'control'
   # matched by multiple actual arguments").
   dots <- list(...)
   control <- utils::modifyList(list(adapt_delta = 0.95),

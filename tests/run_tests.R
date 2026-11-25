@@ -253,7 +253,7 @@ p_ok <- tryCatch({
 check(p_ok, "all spectrum + DiD figures build")
 
 # ---- joint Stan model (slow; run with SSDTA_TEST_STAN=1) -------------------
-# Regression test for 0.1.1: stratum names with non-syntactic characters
+# Regression test for 0.1.2: stratum names with non-syntactic characters
 # ("Not-detected", "Very low") must map back, and a user `control` must not clash.
 if (identical(Sys.getenv("SSDTA_TEST_STAN"), "1") && requireNamespace("brms", quietly = TRUE)) {
   jm <- suppressWarnings(ssdta_meta(npoc_by_ultra_stratum, engine = "stan_joint", n_draws = 500,

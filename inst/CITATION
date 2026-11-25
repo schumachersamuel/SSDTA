@@ -26,9 +26,9 @@ bibentry(
   title       = "SSDTA: Spectrum-Standardized Diagnostic Test Accuracy",
   author      = person("Samuel G.", "Schumacher"),
   year        = "2026",
-  note        = "R package version 0.1.1",
+  note        = "R package version 0.1.2",
   url         = "https://doi.org/10.5281/zenodo.20033072",
   textVersion = paste(
     "Schumacher SG (2026). SSDTA: Spectrum-Standardized Diagnostic Test Accuracy.",
-    "R package version 0.1.1.")
+    "R package version 0.1.2.")
 )
